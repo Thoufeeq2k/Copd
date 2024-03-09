@@ -1,4 +1,5 @@
 tensorflow
+soundfile
 streamlit
 numpy
 librosa
