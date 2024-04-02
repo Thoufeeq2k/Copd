@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import tensorflow as tf
 import librosa
-import ffmpeg
 from sklearn.preprocessing import LabelEncoder
 from pydub import AudioSegment
 import os
