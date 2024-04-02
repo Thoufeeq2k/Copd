@@ -3,6 +3,15 @@ import numpy as np
 import tensorflow as tf
 import librosa
 from sklearn.preprocessing import LabelEncoder
+from pydub import AudioSegment
+import os
+
+def convert_mp3_to_wav(mp3_data):
+    audio = AudioSegment.from_mp3(mp3_data)
+    wav_file = mp3_data.name.replace('.mp3', '.wav')
+    audio.export(wav_file, format="wav")
+    return wav_file
+
 
 class_labels = ['COPD', 'Healthy']
 
@@ -14,7 +23,17 @@ model = tf.keras.models.load_model('audio_classification.hdf5')
 
 st.title("Audio Classification")
 
-uploaded_file = st.file_uploader("Upload Audio File", type=["wav"])
+uploaded_file = st.file_uploader("Upload Audio File", type=["mp3","wav"])
+
+if uploaded_file is not None:
+        if uploaded_file.type == "audio/wav":
+            # No need for conversion, use the uploaded WAV file directly
+            wav_file = uploaded_file
+            st.success("Uploaded WAV file used directly.")
+        else:
+            # Convert MP3 to WAV
+            wav_file = convert_mp3_to_wav(uploaded_file)
+            st.success("MP3 file converted to WAV format.")
 
 if uploaded_file is not None:
     # Load the selected audio file
