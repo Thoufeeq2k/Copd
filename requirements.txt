@@ -6,4 +6,3 @@ librosa
 scikit-learn
 pydub
 resampy
-ffmpeg
