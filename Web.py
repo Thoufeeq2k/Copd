@@ -7,9 +7,12 @@ from pydub import AudioSegment
 import os
 
 def convert_mp3_to_wav(mp3_data):
+    print("Converting MP3 to WAV...")
     audio = AudioSegment.from_mp3(mp3_data)
     wav_file = mp3_data.name.replace('.mp3', '.wav')
+    print("Exporting WAV file...")
     audio.export(wav_file, format="wav")
+    print("Conversion complete.")
     return wav_file
 
 
