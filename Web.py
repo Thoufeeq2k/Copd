@@ -35,7 +35,7 @@ if uploaded_file is not None:
             wav_file = convert_mp3_to_wav(uploaded_file)
             st.success("MP3 file converted to WAV format.")
 
-if wav_file is not None:
+if uploaded_file is not None:
     # Load the selected audio file
     audio, sample_rate = librosa.load(wav_file, res_type='kaiser_fast')
     mfccs_features = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
