@@ -21,7 +21,6 @@ if uploaded_file is not None:
     audio, sample_rate = librosa.load(uploaded_file, res_type='kaiser_fast')
     mfccs_features = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
     mfccs_scaled_features = np.mean(mfccs_features.T, axis=0)
-
     mfccs_scaled_features = mfccs_scaled_features.reshape(1, -1)
 
     predicted_label = np.argmax(model.predict(mfccs_scaled_features), axis=-1)
