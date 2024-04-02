@@ -16,7 +16,7 @@ def convert_mp3_to_wav(mp3_data):
     return wav_file
 
 
-class_labels = ['COPD', 'Healthy']
+class_labels = ['Healthy', 'COPD']
 
 labelencoder = LabelEncoder()
 labelencoder.fit(class_labels)
