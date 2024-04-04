@@ -22,7 +22,7 @@ labelencoder = LabelEncoder()
 labelencoder.fit(class_labels)
 
 # Load your audio classifier model
-model = tf.keras.models.load_model('audio_classification.hdf5')
+model = tf.keras.models.load_model('audio_classification.keras')
 
 st.title("Audio Classification")
 
